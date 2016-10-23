@@ -11,6 +11,7 @@ if __name__ == "__main__":
     parser.add_option("-s", "--subject", dest="subject", help="sets the email subject", metavar="STR", default="")
     parser.add_option("-a", "--address", dest="address", help="sets the email sender", metavar="STR", default="foo@bar.baz")
     parser.add_option("-m", "--message", dest="message", help="sets the email content to send", metavar="FILE", default="")
+    parser.add_option("-k", "--key", dest="key", help="key ID of the sender", metavar="STR", default="")
     args, trash = parser.parse_args()
 
     if args.message == "":
@@ -19,7 +20,7 @@ if __name__ == "__main__":
 
     with open(args.file, 'r') as csvFile:
         message = open(args.message)
-        gpgEngine = encrypt.GPGEngine()
+        gpgEngine = encrypt.GPGEngine(args.key)
         csvData = csv.reader(csvFile, delimiter=',')
         for i in csvData:
             message = str(gpgEngine.encryptMail(message.read(), i[0]))
