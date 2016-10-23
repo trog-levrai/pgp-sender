@@ -8,6 +8,6 @@ The main script is in the src directory: script.py
 
 For a complete list of options:
 
-'''shell
+```shell
 ./script.py --help
-'''
+```
