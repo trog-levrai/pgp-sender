@@ -11,3 +11,4 @@ For a complete list of options:
 ```shell
 ./script.py --help
 ```
+To send emails you need to have a Sendgrid API key and export it under *SENDGRID_API_KEY* environment variable.
